@@ -7,14 +7,11 @@
 
 import Foundation
 
-//  https://ember-sparkly-rule.glitch.me/current-date => Glitch servers shutdown
-//
-//  { "datetime": "yyyy-MM-dd'T'HH:mm:ss+09:00" }
 struct CurrentDate: Decodable, Identifiable {
     let id = UUID()
-    let dateTime: String
+    let date: String
     
     private enum CodingKeys: String, CodingKey {
-        case dateTime = "datetime"
+        case date = "date"
     }
 }

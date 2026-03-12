@@ -44,6 +44,6 @@ struct CurrentDateViewModel {
         get { return currentDate.id }
     }
     var date: String {
-        get { return currentDate.dateTime }
+        get { return currentDate.date }
     }
 }

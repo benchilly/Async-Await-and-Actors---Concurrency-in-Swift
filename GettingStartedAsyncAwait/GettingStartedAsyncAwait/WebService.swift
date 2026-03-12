@@ -10,7 +10,7 @@ import Foundation
 class WebService {
     
     func getDate() async throws -> CurrentDate? {
-        guard let url = URL(string: "https://mocki.io/v1/c60c7d72-74f8-4080-9672-312cae14eb53") else {
+        guard let url = URL(string: "http://localhost:3000/current-date") else {
             fatalError("URL is incorrect!")
         }
         let (data, _) = try await URLSession.shared.data(from: url)
