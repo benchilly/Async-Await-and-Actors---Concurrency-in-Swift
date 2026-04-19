@@ -24,14 +24,14 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             </blockquote>
           </aside>
           <figure>
-            <img src="https://github.com/user-attachments/assets/abf6f709-84a0-40c9-b3c3-e9ae9facad30" />
+            <img src="https://github.com/user-attachments/assets/82c69574-68e6-4788-a77f-1f693c8e205b" />
             <figcaption>
               <p>Main-Thread는 <strong>'한 번에 하나씩 작업을 처리'</strong>하는 <strong>"Serial Queue"</strong>이므로, <br>
                 Downloading Images와 같이 무거운 작업이 진행될 때, 해당 스레드를 점유하고 있어 다른 UI Event 진행이 불가능</p>
             </figcaption>
           </figure>
           <figure>
-            <img src="https://github.com/user-attachments/assets/d8c48e6b-6740-4319-be8e-c4a1be600a2c" />
+            <img src="https://github.com/user-attachments/assets/f8a5e82a-8a7c-4f0d-895d-a4805402bcbe" />
             <figcaption>
               <p>Image나 기타 자료를 다운로드하는 무거운 작업들은 Background-Thread에서 수행!</p>
             </figcaption>
@@ -58,7 +58,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <h4>Dispatch Queue의 특성</h4>
               <figure>
-                <img src="https://github.com/user-attachments/assets/09ac1773-37c7-4a58-bc0f-ddf96c731492" />
+                <img src="https://github.com/user-attachments/assets/1f0dd4a6-e3f4-4924-a08e-3b789dcf76ca" />
                 <figcaption>
                   <ol type="1">
                     <li><strong>Serial: 하나의 Thread에서 '순차 실행'</strong>하며, 작업의 순서가 중요한 경우 직렬처리를 사용</li>
@@ -70,7 +70,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <h4>Dispatch Queue의 종류</h4>
               <figure>
-                <img src="https://github.com/user-attachments/assets/d60152ec-6c55-4105-aaa2-222cee4621a4" />
+                <img src="https://github.com/user-attachments/assets/3c2d1d56-abb0-4017-b49d-f8b02319b2ea" />
                 <figcaption>
                   <ol type="1">
                     <li><strong>Main Queue</strong>: GCD가 제공하는 시스템 큐로, <strong>UI 작업 처리에 사용되는 직렬 큐</strong> (e.g. <code>DispatchQueue.main</code>)</li>
@@ -103,7 +103,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <p><strong>Synchronous (동기): 작업을 시키고 작업의 완료를 기다림</strong></p>
               <figure>
-                <img src="https://github.com/user-attachments/assets/8d725a51-d9aa-4f55-93cc-cfddcdb4d8cb" />
+                <img src="https://github.com/user-attachments/assets/cafc677a-cae6-4e54-b052-fae1e30c3996" />
                 <figcaption>
                   <p>작업이 끝날 때까지 <strong>해당 thread가 점유되어 다른 작업 수행이 불가능!</strong></p>
                   <aside class="tip">
@@ -117,7 +117,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <p><strong>Asynchronous (비동기): 작업을 시키고 작업의 완료를 기다리지 않음</strong></p>
               <figure>
-                <img src="https://github.com/user-attachments/assets/e11d9834-ac30-4cc5-9757-25aade558918" />
+                <img src="https://github.com/user-attachments/assets/c8ed4c40-183b-40f3-8e04-67bda676fb95" />
                 <figcaption>
                   <p><strong>해당 thread가 점유되지 않아 다른 작업 수행이 가능!</strong></p>
                   <aside class="tip">
@@ -160,7 +160,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <h4>Async/await 내부 원리 (Thread Control)</h4>
               <figure>
-                <img src="https://github.com/user-attachments/assets/3ad9cdfa-6295-4d65-a60c-025228ce653b" />
+                <img src="https://github.com/user-attachments/assets/e5f084b3-919a-4545-8d5b-15bc1cb333ab" />
                 <figcaption>
                   <ol type="1">
                     <li>호출: caller가 callee (async)를 호출하면, caller가 실행되던 Thread Control을 callee에게 전달</li>
@@ -168,8 +168,10 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                       <p></p>
                       <aside class="tip">
                         <blockquote>
-                          <p><strong>⭐ <code>await</code></strong>는 async 함수가 <strong>"일시 중단될 수도 있음"</strong>을 나타내며, 이는 <strong>Non Thread-Blocking</strong>이다</p>
-                          <p>&emsp; 반드시 suspend 된다는 것이 아님! (<code>await</code>를 <strong>'potential suspension point (잠재적인 일시중단 지점)'</strong>이라고 표현함)</p>
+                          <p><strong>⭐ <code>await</code></strong>는 async 함수가 <strong>"일시 중단될 수도 있음"</strong>을 나타내며, 
+                            이는 <strong>Non Thread-Blocking</strong>이다</p>
+                          <p>&emsp; 반드시 suspend 된다는 것이 아님!
+                            (<code>await</code>를 <strong>'potential suspension point (잠재적인 일시중단 지점)'</strong>이라고 표현함)</p>
                         </blockquote>
                       </aside>
                     </li>
@@ -588,8 +590,8 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <figcaption>
               <aside class="tip">
                 <blockquote>
-                  <p><strong>⭐ Wrapping을 통한 Proxy Pattern 기반으로 기존의 callback API는 유지하면서, Async/Await 함수로 Migration</strong></p>
-                  <p>&emsp; 비동기 Task 재개 시, 호출해야 Method</p>
+                  <p><strong>⭐ Wrapping을 통한 Proxy Pattern 적용으로 기존의 callback API는 유지하면서, Async/Await 함수로 Migration</strong></p>
+                  <p>&emsp; 비동기 Task 재개 시, 호출할 수 있는 Methods</p>
                   <ul type="circle">
                     <li>resume(returning:)</li>
                     <li>resume(throwing:)</li>
@@ -600,6 +602,189 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               </aside>
             </figcaption>
           </figure>
+        </li>
+        <br>
+      </ul>
+    </section>
+  </details>
+</article>
+
+<!-- 5.Understanding Structured Concurrency in Swift -->
+<article class="lecture5">
+  <details>
+    <!-- Title -->
+    <summary><strong>5️⃣ Understanding Structured Concurrency in Swift</strong></summary>
+    <!-- Contents -->
+    <section>
+      <ul>
+        <li>
+          <h3>Prerequisites.</h3>
+          <figure>
+            <table>
+              <tr>
+                <td align="center">
+                  <img src="https://github.com/user-attachments/assets/d219d976-5bef-4f44-805a-01fbe0e0f473" />
+                  <p>Sync / Async</p>
+                </td>
+                <td align="center">
+                  <img src="https://github.com/user-attachments/assets/e31ff028-0700-4771-86ff-1253524a2d17" />
+                  <p>Serial / Concurrent</p>
+                </td>
+                <td align="center">
+                  <img src="https://github.com/user-attachments/assets/6710e805-42fb-41ba-84f1-78c8873caf1c" />
+                  <p><code>async</code> / <code>await</code></p>
+                </td>
+              </tr>
+            </table>
+          </figure>
+          <br>
+        </li>
+        <!-- Async-let Tasks -->
+        <li>
+          <h3>Async-let Tasks (= Async-let Binding / Concurrent Binding)</h3>
+          <p><strong><code>async let</code>: 여러 비동기 작업을 "동시에" 실행</strong></p>
+          <aside class="tip">
+            <blockquote>
+              <p>💡 "동시"의 의미</p>
+              <ul type="circle">
+                <li><strong>논리적 관점: Concurrent (동시성)</strong></li>
+                <li><strong>물리적 관점: Parallel (병렬성)</strong></li>
+              </ul>
+            </blockquote>
+          </aside>
+          <aside class="tip">
+            <blockquote>
+              <p>⭐ 동시성 vs 병렬성</p>
+              <ul type="circle">
+                <li>Concurrent: <strong>Context-Switching을 통해</strong> 여러 작업이 <strong>"동시에 실행되는 것처럼"</strong> 보이게 하는 것</li>
+                <li>Parallel: <strong>Multi-core를 통해</strong> <strong>"실제로 동시에 독립적으로 실행"</strong>되는 것</li>
+              </ul>
+            </blockquote>
+          </aside>
+          <br>
+          <ul>
+            <li>
+              <h4><code>async-let</code> 사용이유</h4>
+              <p>
+                여러 비동기 작업을 단순히 <code>await</code>로만 사용하게 될 경우, suspend를 통해 sequential하게 동작함으로써 총 작업의 소요 시간이 길어짐 <br>
+                <code>async-let</code>은 여러 비동기 작업을 concurrent하게 실행시킴으로써, 병렬성을 확보할 수 있음
+              </p>
+            </li>
+            <li>
+              <h4>기존 Async와 Async-let의 동작 원리</h4>
+              <figure>
+                <table>
+                  <tr>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/fdadebef-f387-4497-b2be-88e1d4db652f" />
+                      <p>기존 Async의 동작 원리</p>
+                    </td>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/b1a412f3-37d0-4bf9-a1b7-ca044dad82bd" />
+                      <p>Async-let의 동작 원리</p>
+                    </td>
+                  </tr>
+                </table>
+                <figcaption>
+                  <aside class="tip">
+                    <blockquote>
+                      <p>⭐ Sequential Bindings와 Concurrent Bindings의 가장 큰 차이는 <strong>실행의 흐름 갯수 차이!</strong></p>
+                      <p>&emsp;<code>async let</code>은 <strong>Child Task라는 새로운 하위 작업을 생성함</strong></p>
+                    </blockquote>
+                  </aside>
+                </figcaption>
+              </figure>
+              <br>
+            </li>
+          </ul>
+          <br>
+        </li>
+        <!-- Task tree -->
+        <li>
+          <h3>Task tree</h3>
+          <p><strong>Task tree: Parent Task와 Child Task 관계 기반의 Hierarchy</strong></p>
+          <aside class="tip">
+            <blockquote>
+              <p><strong>⭐ Task tree는 Structured Concurrency (구조적 동시성)의 핵심!</strong></p>
+            </blockquote>
+          </aside>
+          <br>
+          <ul>
+            <li>
+              <h4>Task tree 특징</h4>
+              <ul type="circle">
+                <li>
+                  <p>우선순위 상속: Task의 속성 (e.g. cancellation, priority, task-level variables, etc.)으로부터 영향을 받음</p>
+                  <aside class="tip">
+                    <blockquote>
+                      <p>즉, <strong>Child Task는 Parent Task로부터 속성들을 상속받음</strong></p>
+                    </blockquote>
+                  </aside>
+                </li>
+                <li>
+                  <p>생명주기 자동관리: <strong>Child Task가 모두 finish 되어야 Parent Task도 finish됨</strong></p>
+                  <aside class="tip">
+                    <blockquote>
+                      <ul type="circle">
+                        <li><strong>Parent와 Child는 Link 관계로 이루어져 있으며, 이는 Parent는 Child가 모두 끝난 후에야 작업을 마칠 수 있다는 rule을 강제함</strong></li>
+                        <li>만약 <strong>Child가 error를 냈다면 Parent는 암묵적 취소 상태</strong>, <strong>Child가 끝나지 않았다면 Parent는 대기 상태</strong>가 됨</li>
+                      </ul>
+                    </blockquote>
+                  </aside>
+                </li>
+                <li>
+                  <p>취소 전파: <strong>Parent가 취소되면, Child에 취소가 자동으로 전파됨</strong></p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h4>Task tree 동작 원리</h4>
+              <figure>
+                <table>
+                  <tr>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/d898e26b-cfe9-44cf-98e9-89ee07a35d38" />
+                    </td>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/13379661-ae25-4bfb-b57d-6c5b3a82e047" />
+                    </td>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/3dc8f77d-127b-4a59-816a-a398ce58fdb2" />
+                    </td>
+                  </tr>
+                </table>
+                <figcaption>
+                  <p>
+                    <code>metadata</code> Task를 await하는 과정에서 error가 발생되었다면, fetchOneThumbnail()은 그 error를 던지며 종료됨
+                    <br><br>
+                    그러나, fetchOne()이 종료되면 두 번째 Task는?
+                    <br><br>
+                    👉 두번째 Child Task인 <code>try await UIImage(data: data)</code>는 <strong>Swift가 "자동으로 cancel을 표시"</strong>하고, 
+                    <br>
+                    &emsp; fetchOneThumbnail()을 종료하기 전에 해당 unawaited Task가 완료될 때까지 기다림
+                  </p>
+                  <aside class="tip">
+                    <blockquote>
+                      <p>Cancelled는 <strong>"결괏값이 필요 없어졌음"을 의미</strong>하는 것으로 <strong>Task를 중지하는 것은 아님</strong></p>
+                    </blockquote>
+                  </aside>
+                  <br>
+                  <ul type="circle">
+                    <li>비정상적인 종료가 발생하면, unawaited task들을 자동으로 취소(Canceled) 상태로 표시</li>
+                    <li>상위 task가 cancel되면 하위 task도 자동으로 cancel</li>
+                    <li>상위 task가 finish 되려면, 반드시 하위 task가 finish 되어야함</li>
+                  </ul>
+                  <br>
+                  <aside class="tip">
+                    <blockquote>
+                      <p>⭐ 이러한 <strong>"보장 (Guarantees)"은 구조적 동시성 (Structured Concurrency)의 근간!</strong></p>
+                    </blockquote>
+                  </aside>
+                </figcaption>
+              </figure>
+              <br>
+            </li>
+          </ul>
         </li>
       </ul>
     </section>
