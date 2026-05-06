@@ -9,7 +9,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
     <summary><strong>1️⃣ Understanding Concurrent Programming in iOS</strong></summary>
     <!-- Contents -->
     <section>
-      <ul>
+      <ul type="circle">
         <!-- What is Concurrency? -->
         <li>
           <h3>What is Concurrency?</h3>
@@ -17,7 +17,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
           <aside class="impl">
             <blockquote>
               <p>💻 Concurrency 구현</p>
-              <ul>
+              <ul type="circle">
                 <li>시분할 (Time-slicing)을 통해 구현</li>
                 <li>Host OS의 Multi CPU core 사용이 가능한 경우, 병렬처리 방식으로 구현</li>
               </ul>
@@ -54,7 +54,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               <p><strong>🟰 즉, GCD는 OS 레벨의 동시성/멀티스레딩을 위한 라이브러리로, Dispatch Framework를 통해 사용 가능</strong></p>
             </blockquote>
           </aside>
-          <ul>
+          <ul type="circle">
             <li>
               <h4>Dispatch Queue의 특성</h4>
               <figure>
@@ -73,8 +73,14 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                 <img src="https://github.com/user-attachments/assets/3c2d1d56-abb0-4017-b49d-f8b02319b2ea" />
                 <figcaption>
                   <ol type="1">
-                    <li><strong>Main Queue</strong>: GCD가 제공하는 시스템 큐로, <strong>UI 작업 처리에 사용되는 직렬 큐</strong> (e.g. <code>DispatchQueue.main</code>)</li>
-                    <li><strong>Global Queue</strong>: GCD가 제공하는 글로벌 동시 큐로, <strong>여러 작업을 동시에 실행할 수 있는 큐</strong> (e.g. <code>DispatchQueue.global(qos:)</code>)</li>
+                    <li>
+                      <strong>Main Queue</strong>: GCD가 제공하는 시스템 큐로, <strong>UI 작업 처리에 사용되는 직렬 큐</strong> 
+                      (e.g. <code>DispatchQueue.main</code>)
+                    </li>
+                    <li>
+                      <strong>Global Queue</strong>: GCD가 제공하는 글로벌 동시 큐로, <strong>여러 작업을 동시에 실행할 수 있는 큐</strong> 
+                      (e.g. <code>DispatchQueue.global(qos:)</code>)
+                    </li>
                     <li>Custom Queue: 사용자 정의 직렬/동시 큐 (e.g. <code>DispatchQueue(label:, attributes:)</code>)</li>
                   </ol>
                 </figcaption>
@@ -95,11 +101,11 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
     <summary><strong>2️⃣ Getting Started with Async and Await</strong></summary>
     <!-- Contents -->
     <section>
-      <ul>
+      <ul type="circle">
         <!-- Sync & Async -->
         <li>
           <h3>Sync & Async</h3>
-          <ul>
+          <ul type="circle">
             <li>
               <p><strong>Synchronous (동기): 작업을 시키고 작업의 완료를 기다림</strong></p>
               <figure>
@@ -138,7 +144,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
           <aside class="tip">
             <blockquote>
               <p>🟣 <code>async</code> & <code>await</code> 의미</p>
-              <ul>
+              <ul type="circle">
                 <li><code>async</code>: <strong>함수가 비동기적임을 나타냄</strong></li>
                 <li><code>await</code>: <strong>비동기 함수 및 비동기 Context 내에서 다른 비동기 함수를 호출할 때 사용</strong><br></li>
               </ul>
@@ -146,7 +152,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               <p>&emsp;&emsp; 비동기 context에는 <code>.task()</code>, <code>Task {}</code>, <code>async</code>함수 등이 존재</p>
             </blockquote>
           </aside>
-          <ul>
+          <ul type="circle">
             <li>
               <h4>Async/await 등장 배경</h4>
               <p>기존의 <code>@escaping</code> closures를 이용한 비동기 처리 코드는 Deeply-nested closures (중첩 클로저)가 됨으로써, <br>
@@ -212,12 +218,12 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
     <summary><strong>3️⃣ Understanding MVVM Design Pattern</strong></summary>
     <!-- Contents -->
     <section>
-      <ul>
+      <ul type="circle">
         <!-- What are Design Patterns? -->
         <li>
           <h3>What are Design Patterns?</h3>
           <p><strong>Design Pattern: 특정 시나리오에서 특정 문제를 해결하기 위한 최적의 방법</strong></p>
-          <ul>
+          <ul type="circle">
             <li>Best practice: 문제 해결을 위한 최적의 방법</li>
             <li>Relationships between classes & objects: class와 object 간의 관계</li>
             <li>Speed Up development: 개발 속도 향상</li>
@@ -256,7 +262,6 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <h3>MVC (Model-View-Controller)</h3>
               <ul type="circle">
-                <!-- Traditional MVC (Smalltalk) -->
                 <li>
                   <h4>Traditional MVC (Smalltalk)</h4>
                   <figure>
@@ -278,7 +283,8 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                           <p>🔥 Traditional MVC의 문제점 (Theoritical Problem)</p>
                           <ul type="circle">
                             <li>
-                              <p><strong>View와 Model은</strong> Notification으로 연결된 <strong>상호 의존 관계</strong> (= <strong>객체의 재사용성 저해</strong>)</p>
+                              <p><strong>View와 Model은</strong> Notification으로 연결된 <strong>상호 의존 관계</strong> 
+                                (= <strong>객체의 재사용성 저해</strong>)</p>
                             </li>
                           </ul>
                         </blockquote>
@@ -286,7 +292,6 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                     </figcaption>
                   </figure>
                 </li>
-                <!-- Cocoa MVC -->
                 <li>
                   <h4>Cocoa MVC</h4>
                   <figure>
@@ -476,7 +481,8 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                   <ol type="1">
                     <li>Distribution: MVP의 View보다 MVVM의 View가 가지는 책임이 더 큼</li>
                     <li>Testability: View와 ViewModel은 서로 의존관계가 아니므로 테스트하기 쉬움</li>
-                    <li>Ease of use: MVP와 비슷한 양의 코드를 요구하지만, View의 이벤트를 Presenter를 통해 알리고 수동으로 View를 갱신하는 MVP와 달리 바인딩을 사용하면 MVVM이 훨씬 더 간편함</li>
+                    <li>Ease of use: MVP와 비슷한 양의 코드를 요구하지만, 
+                      View의 이벤트를 Presenter를 통해 알리고 수동으로 View를 갱신하는 MVP와 달리 바인딩을 사용하면 MVVM이 훨씬 더 간편함</li>
                   </ol>
                 </li>
               </ul>
@@ -496,7 +502,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
     <summary><strong>4️⃣ Exposing your Function As Async/Await Using Continuation</strong></summary>
     <!-- Contents -->
     <section>
-      <ul>
+      <ul type="circle">
         <!-- What is Continuation? -->
         <li>
           <h3>What is Continuation?</h3>
@@ -506,7 +512,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               <p><strong>🟰 즉, 기존의 callback 함수를 <code>async</code>/<code>await</code> 스타일로 변환</strong></p>
             </blockquote>
           </aside>
-          <ul>
+          <ul type="circle">
             <li>
               <h4>Continuation의 장•단점</h4>
               <table border="1" cellpadding="10" cellspacing="0">
@@ -521,38 +527,26 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                     <td>
                       <ul type="circle">
                         <li>callback API를 Async/Await로 전환
-                          <ul>
-                            <li><strong>Legacy callback API 유지</strong> + <strong>점진적 Migration 가능</strong></li>
-                          </ul>
+                          <ul><li><strong>Legacy callback API 유지</strong> + <strong>점진적 Migration 가능</strong></li></ul>
                         </li>
                         <li>Straight-line code
-                          <ul>
-                            <li><strong>가독성 & 유지보수성 개선</strong></li>
-                          </ul>
+                          <ul><li><strong>가독성 & 유지보수성 개선</strong></li></ul>
                         </li>
-                        <li>withCheckedContinuation의 안정성
-                          <ul>
-                            <li>Runtime 시, <strong>resume을 한 번만 호출했는지 Check</strong></li>
-                          </ul>
+                        <li> 안정성
+                          <ul type="circle"><li>Runtime 시, <strong>resume을 한 번만 호출했는지 Check</strong></li></ul>
                         </li>
                       </ul>
                     </td>
                     <td>
                       <ul type="circle">
-                        <li>resume 누락시, Task 무한 대기
-                          <ul>
-                            <li>영원히 suspend 상태가 됨 (<strong>= DeadLock 발생 가능성</strong>)</li>
-                          </ul>
+                        <li>resume 누락 시, Task 무한 대기
+                          <ul><li>영원히 suspend 상태 (<strong>= Deadlock 발생 가능성이 생김</strong>)</li></ul>
                         </li>
                         <li>Straight-line code
-                          <ul>
-                            <li><strong>가독성 & 유지보수성 개선</strong></li>
-                          </ul>
+                          <ul><li><strong>가독성 & 유지보수성 개선</strong></li></ul>
                         </li>
                         <li>withCheckedContinuation의 안정성
-                          <ul>
-                            <li>Runtime 시, <strong>resume을 "한 번만" 호출했는지 Check</strong></li>
-                          </ul>
+                          <ul><li>Runtime 시, <strong>resume을 "한 번만" 호출했는지 Check</strong></li></ul>
                         </li>
                       </ul>
                     </td>
@@ -566,7 +560,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
         <!-- Continuation 종류 -->
         <li>
           <h3>Continuation 종류</h3>
-          <ul>
+          <ul type="circle">
             <li><strong>withCheckedContinuation</strong>: Runtime 시, <strong>"안정성을 보장"하는 방법</strong></li>
             <li><strong>withUnsafeContinuation</strong>: 더 낮은 수준의 연산을 원할 때 사용, <strong>Runtime "안정성 검증이 없음"</strong></li>
           </ul>
@@ -617,7 +611,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
     <summary><strong>5️⃣ Understanding Structured Concurrency in Swift</strong></summary>
     <!-- Contents -->
     <section>
-      <ul>
+      <ul type="circle">
         <li>
           <h3>Prerequisites.</h3>
           <figure>
@@ -662,7 +656,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               </ul>
             </blockquote>
           </aside>
-          <ul>
+          <ul type="circle">
             <li>
               <h4><code>async-let</code> 사용 이유</h4>
               <p>
@@ -689,7 +683,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                   <aside class="tip">
                     <blockquote>
                       <p>⭐ Sequential Bindings와 Concurrent Bindings의 가장 큰 차이는 <strong>실행의 흐름 갯수 차이!</strong></p>
-                      <p>&emsp;<code>async let</code>은 <strong>Child Task라는 새로운 하위 작업을 생성함</strong></p>
+                      <p>&emsp; <code>async let</code>은 <strong>Child Task라는 새로운 하위 작업을 생성함</strong></p>
                     </blockquote>
                   </aside>
                 </figcaption>
@@ -708,7 +702,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               <p><strong>⭐ Task tree는 Structured Concurrency (구조적 동시성)의 핵심!</strong></p>
             </blockquote>
           </aside>
-          <ul>
+          <ul type="circle">
             <li>
               <h4>Task tree 특징</h4>
               <ul type="circle">
@@ -753,21 +747,14 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                 </table>
                 <figcaption>
                   <p>
-                    만약 <strong>Child Task에서 error가 발생되었다면, Parent Task는 cancelled 되면서 모든 subtask들도 자동으로 cancel 됨</strong>
-                    <br><br>
-                    즉, 함수가 비정상적인 방법으로 종료되었을 때, unawaited task를 <strong>자동으로 cancel로 표시</strong>하고 <strong>함수를 종료하기 전에
-                    </strong> 해당 <strong>unawaited task가 완료될 때까지 기다린 후 함수를 종료</strong>
+                    만약 <strong>Child Task에서 error가 발생되었다면, Parent Task는 cancelled 되면서 모든 subtask들도 자동으로 cancel 됨</strong> <br>
+                    여기서 </strong>Cancelled는 <strong>"결괏값이 필요 없어졌음"을 의미</strong>하며, 이는 <strong>Task를 중지하는 것이 아님</strong>
                   </p>
-                  <aside class="tip">
-                    <blockquote>
-                      <p></strong>Cancelled는 <strong>"결괏값이 필요 없어졌음"을 의미</strong>하는 것으로 <strong>Task를 중지하는 것은 아님</strong></p>
-                    </blockquote>
-                  </aside>
                   <br>
                   <aside class="tip">
                     <blockquote>
-                      <p>⭐ 이러한 <strong>"보장 (Guarantees)"은 구조적 동시성 (Structured Concurrency)의 근간으로<br>
-                      &emsp; Task의 Lifetime 관리를 도와, 의도치 않은 Task leaks 방지</strong></p>
+                      <p>⭐ 이러한 <strong>"보장 (Guarantees)"은 구조적 동시성 (Structured Concurrency)의 근간!<br>
+                      &emsp; Task의 Lifetime 관리를 도와 의도치 않은 Task leaks를 방지</strong></p>
                     </blockquote>
                   </aside>
                 </figcaption>
@@ -780,21 +767,18 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
         <!-- Cancellation -->
         <li>
           <h3>Cancellation</h3>
-          <p><strong>Cancellation: 작업을 중지하고 부분적인 결과를 반환하거나 오류 발생 신호를 보낼 때 사용</strong></p>
+          <p><strong>Cancellation: 작업의 결과가 더 이상 필요하지 않을 경우, 작업을 중지하고 부분적인 결과를 반환하거나 오류 발생 신호를 보낼 때 사용</strong></p>
           <aside class="tip">
             <blockquote>
-              <p>💡 작업의 결과가 더 이상 필요하지 않을 경우를 전제로 함</p>
+              <h4>💡 Cancellation is cooperative</h4>
+              <ul type="circle">
+                <li>Task are <strong>not</strong> stopped immediately when cancelled</li>
+                <li>Cancellation can be checked from anywhere</li>
+                <li>Design your code with cancellation in mind</li>
+              </ul>
             </blockquote>
           </aside>
-          <ul>
-            <li>
-              <h4>Cancellation is cooperative</h4>
-              <ul type="circle">
-                <li><p>Task are <strong>not</strong> stopped immediately when cancelled</p></li>
-                <li><p>Cancellation can be checked from anywhere</p></li>
-                <li><p>Design your code with cancellation in mind</p></li>
-              </ul>
-            </li>
+          <ul type="circle">
             <li>
               <h4>Cancellation 종류</h4>
               <ul type="circle">
@@ -828,7 +812,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               <p>⭐ Group Task는 <code>async let</code>보다 <strong>더 큰 유연성 제공과 구조적 동시성의 장점을 모두 유지</strong></p>
             </blockquote>
           </aside>
-          <ul>
+          <ul type="circle">
             <li>
               <h4>Async-let의 문제점</h4>
               <figure>
@@ -877,37 +861,36 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                 <img src="https://github.com/user-attachments/assets/ac44c45e-4f38-4852-8976-783eab4aedc8" />
               </figure>
               <figcaption>
-                <p>
-                  thumbnails 접근 시, Data-race 문제가 발생
-                </p>
+                <p>thumbnails 접근 시, Data-race 문제가 발생</p>
                 <ul type="circle">
                   <li>Collection Types (Array, Set, Dictionary)은 struct로 구현된 값 타입(Value Type)으로 <strong>Thread-Safe 하지 않음</strong></li>
                   <li>addTask()로 추가된 독립적인 Task가 하나의 공유 자원을 동시에 접근 시도</li>
                   <li>Sendable 하지 않은 thumbnails 캡처 제한</li>
                 </ul>
+                <aside class="tip">
+                  <blockquote>
+                    <h4>💡 Data-race safety</h4>
+                    <ul type="circle">
+                      <li>Task creation takes a @Sendable closure</li>
+                      <li>Cannot capture mutable variables</li>
+                      <li>Should only capture value types, actors, or classes that implement their own synchronization</li>
+                    </ul>
+                  </blockquote>
+                </aside>
+                <p>새로운 Task를 만들면 이는 <code>@Sendable</code> closure라는 새로운 closure type이 되고, 
+                  @Sendable closure는 <strong>외부의 가변 변수 캡처가 불가능!</strong>
+                </p>
+                <aside class="tip">
+                  <blockquote>
+                    <p>⭐ @Sendable closure는 Sendable 프로토콜을 준수하는 type만 캡처 가능</p>
+                    <ul type="circle">
+                      <li>값 타입 (Value Types)</li>
+                      <li>actors (여러 스레드에서 접근할 수 있도록 설계된 객체)</li>
+                      <li>classes (일반 class가 아닌, 자체 동기화를 구현한 thread-safe한 class)</li>
+                    </ul>
+                  </blockquote>
+                </aside>
               </figcaption>
-            </li>
-            <li>
-              <h4>Data-race safety</h4>
-              <ul type="circle">
-                <li>Task creation takes a @Sendable closure</li>
-                <li>Cannot capture mutable variables</li>
-                <li>Should only capture value types, actors, or classes that implement their own synchronization</li>
-              </ul>
-              <p>
-                새로운 Task를 만들면 이는 <code>@Sendable</code> closure라는 새로운 closure type이 되고, 
-                @Sendable closure는 <strong>외부의 가변 변수 캡처가 불가능!</strong>
-              </p>
-              <aside class="tip">
-                <blockquote>
-                  <p>⭐ @Sendable closure는 Sendable 프로토콜을 준수하는 type만 캡처 가능</p>
-                  <ul type="circle">
-                    <li>값 타입 (Value Types)</li>
-                    <li>actors (여러 스레드에서 접근할 수 있도록 설계된 객체)</li>
-                    <li>classes (일반 class가 아닌, 자체 동기화를 구현한 thread-safe한 class)</li>
-                  </ul>
-                </blockquote>
-              </aside>
             </li>
             <li>
               <h4>withThrowingTaskGroup()에서 Data-race 해결법</h4>
@@ -921,26 +904,125 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <h4>Group Task vs Async-let (Task tree rule 구현 관점)</h4>
               <figure>
-                <img src="https://github.com/user-attachments/assets/c9da2f24-cf46-445c-aa37-c5b178c6e6ac" />
+                <img src="https://github.com/user-attachments/assets/b4dd8a74-4e5a-43b1-85a2-1011ed18272d" />
               </figure>
               <figcaption>
-                <p>만약 Group의 결과를 순회하는 for-await loop 안에서 error와 함께 완료된 Child Task가 발견되었다면?</p>
-                <aside class="tip">
-                  <blockquote>
-                    <p>error는 group의 block 외부로 thrown 됨</p>
-                  </blockquote>
-                </aside>
+                <p>만약 Group의 결과를 순회하는 for-await loop 안에서 error와 함께 완료된 Child Task가 발견되었다면, 그 error는 Group의 block 외부로 전달됨<br>
+                이 때, <code>async-let</code>과 Group Task의 공통점과 차이점은 다음과 같음</p>
                 <ul type="circle">
-                  <li>공통점: 모든 하위 Task들이 implicitly cancel 된 후, (완료될 때까지) await 상태가 됨</li>
-                  <li>차이점: group이 scope를 벗어나 정상적으로 종료되었다면, 암묵적 취소가 일어나지 않으며 await 상태만 유지됨
-                    <p></p>
+                  <li>
+                    <p>공통점: 모든 Task들이 implicitly cancelled 된 후, awaited 상태가 됨</p>
+                  </li>
+                  <li>
+                    <p>차이점: group이 block을 벗어나 정상적으로 종료되었다면, implicitly cancelled 되지 않고, awaited 상태만 유지</p>
                     <aside class="tip">
                       <blockquote>
-                        <p>💡 group의 <code>cancelAll()</code>을 사용하여 block을 종료하기 전에 모든 task를 수동으로 취소할 수도 있음</p>
+                        <p>💡 group의 <code>cancelAll()</code>을 사용하여 block을 종료하기 전에 모든 task를 수동으로 취소할 수 있음</p>
                       </blockquote>
                     </aside>
+                    <ul type="circle">
+                      <li><code>async-let</code>: 선언된 scope를 벗어날 때까지, await를 호출하지 않으면 implicitly cancelled 된 후 awaited 상태</li>
+                      <li>Task Group: await를 호출하지 않아도, cancel 되지 않고 모든 Child Task가 완료될 때까지 awaited 상태 유지</li>
+                    </ul>
                   </li>
                 </ul>
+                <br>
+                <aside class="tip">
+                  <blockquote>
+                    <p><strong>⭐ 어떠한 방식으로 task를 cancel하든 cancellation은 Task tree에서 자동으로 Top-Down 방식으로 전파!</strong></p>
+                  </blockquote>
+                </aside>
+              </figcaption>
+            </li>
+          </ul>
+        </li>
+        <br>
+        <!-- Unstructured Tasks -->
+        <li>
+          <h3>Unstructured Tasks</h3>
+          <p><strong>Unstructured Tasks: 실행흐름과 생명주기 (Lifetime)가 상위 scope에서 종속되지 않는 독립적인 Task</strong></p>
+          <aside class="tip">
+            <blockquote>
+              <h4>💡 Not all tasks fit a structured pattern</h4>
+              <ul type="circle">
+                <li>Some tasks need to launch from non-async context</li>
+                <li>Some tasks live beyond the confines of a single scope</li>
+              </ul>
+            </blockquote>
+          </aside>
+          <ul type="circle">
+            <li>
+              <h4>Unstructured tasks 사용 예시</h4>
+              <figure>
+                <img src="https://github.com/user-attachments/assets/fc39eadb-19cc-43e4-8881-022f7cfa5e6a" />
+              </figure>
+              <figcaption>
+                <p>async하지 않은 Delegate의 일반(동기) 메서드 context 안에서 비동기 작업 사용이 필요하므로 <code>Task{}</code>로 비동기 태스크 생성</p>
+              </figcaption>
+            </li>
+          </ul>
+          <aside class="tip">
+            <blockquote>
+              <h4>💡 Unstructured tasks</h4>
+              <ul type="circle">
+                <li>Inherit actor isolation and priority of the origin context</li>
+                <li>Liftime is not confined to any scope</li>
+                <li>Can be launched anywhere, even non-async functions</li>
+                <li>Must be manually cancelled or awaited</li>
+              </ul>
+            </blockquote>
+          </aside>
+          <ul type="circle">
+            <li>
+              <h4>Unstructured tasks의 장•단점</h4>
+              <table border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Pros.</th>
+                    <th>Cons.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <ul type="circle">
+                        <li>실행 context의 actor, priority 등을 상속받음</li>
+                        <li>생명주기 (Lifetime)이 특정 scope에 국한되지 않음</li>
+                        <li>비동기 함수가 아닌 영역 (동기 context 내)에서도 실행 가능</li>
+                      </ul>
+                    </td>
+                    <td>
+                      <ul type="circle">
+                        <li>수동으로 관리
+                          <ul>
+                            <li>cancellation 및 errors가 자동 전파 ❌<br>
+                              explicit action (명시적 대응)이 없다면 implicitly awaited도 ❌</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+          </ul>
+          <ul type="circle">
+            <li>
+              <h4>Unstructured tasks 사용 예시 개선안</h4>
+              <figure>
+                <table>
+                  <tr>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/5ee0d63b-9620-433f-8b59-65a6564fcb00" />
+                    </td>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/35dbc066-12e3-401e-a67a-67a160868c28" />
+                    </td>
+                  </tr>
+                </table>
+              </figure>
+              <figcaption>
+                <p>만약 thumbnail이 준비되기 전에, 스크롤이 발생해서 cell이 사라진다면 명시적인 처리 (explicit action)로 <code>cancel()</code>을 호출해 task를 취소</p>
               </figcaption>
             </li>
           </ul>
