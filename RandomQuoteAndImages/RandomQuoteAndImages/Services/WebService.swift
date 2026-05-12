@@ -13,32 +13,12 @@ enum NetworkError: Error {
     case decodingError
 }
 
-final class WebServices {
-    static let shared: WebServices = WebServices()
+final class WebService {
+    static let shared: WebService = WebService()
     
     private init() { }
     
-    func getRandomImages(ids: [Int]) async throws -> [RandomImage] {
-        var randomImages: [RandomImage] = []
-        
-        try await withThrowingTaskGroup(of: (Int, RandomImage).self) { group in
-            //  Fork
-            for id in ids {
-                group.addTask { [self] in
-                    return (id, try await getRandomImage(id: id))
-                }
-            }
-            
-            //  Join
-            for try await (_, randomImage) in group {
-                randomImages.append(randomImage)
-            }
-        }
-        
-        return randomImages
-    }
-    
-    private func getRandomImage(id: Int) async throws -> RandomImage {
+    func getRandomImage(id: Int) async throws -> RandomImage {
         guard let randomImageUrl: URL = Constants.Urls.getRandomImageUrl(),
               let randomQuotesUrl: URL = Constants.Urls.randomQuotesUrl else {
             throw NetworkError.badUrl

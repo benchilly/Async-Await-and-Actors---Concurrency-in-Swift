@@ -10,7 +10,7 @@
 		934405DA2FB19C4F009D855F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934405D72FB19C4F009D855F /* ContentView.swift */; };
 		934405DB2FB19C4F009D855F /* RandomQuoteAndImagesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934405D82FB19C4F009D855F /* RandomQuoteAndImagesApp.swift */; };
 		934405DC2FB19C4F009D855F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934405D62FB19C4F009D855F /* Assets.xcassets */; };
-		934405E22FB19CAB009D855F /* WebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934405E12FB19CAB009D855F /* WebServices.swift */; };
+		934405E22FB19CAB009D855F /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934405E12FB19CAB009D855F /* WebService.swift */; };
 		934405E42FB19E72009D855F /* RandomImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934405E32FB19E72009D855F /* RandomImage.swift */; };
 		934405E62FB1B52D009D855F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934405E52FB1B52D009D855F /* Constants.swift */; };
 		934405E82FB1B556009D855F /* RandomImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934405E72FB1B556009D855F /* RandomImageListViewModel.swift */; };
@@ -20,7 +20,7 @@
 		934405D62FB19C4F009D855F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		934405D72FB19C4F009D855F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		934405D82FB19C4F009D855F /* RandomQuoteAndImagesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomQuoteAndImagesApp.swift; sourceTree = "<group>"; };
-		934405E12FB19CAB009D855F /* WebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServices.swift; sourceTree = "<group>"; };
+		934405E12FB19CAB009D855F /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		934405E32FB19E72009D855F /* RandomImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImage.swift; sourceTree = "<group>"; };
 		934405E52FB1B52D009D855F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		934405E72FB1B556009D855F /* RandomImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImageListViewModel.swift; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		934405DD2FB19C59009D855F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				934405E12FB19CAB009D855F /* WebServices.swift */,
+				934405E12FB19CAB009D855F /* WebService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -176,7 +176,7 @@
 				934405E42FB19E72009D855F /* RandomImage.swift in Sources */,
 				934405DA2FB19C4F009D855F /* ContentView.swift in Sources */,
 				934405DB2FB19C4F009D855F /* RandomQuoteAndImagesApp.swift in Sources */,
-				934405E22FB19CAB009D855F /* WebServices.swift in Sources */,
+				934405E22FB19CAB009D855F /* WebService.swift in Sources */,
 				934405E82FB1B556009D855F /* RandomImageListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
