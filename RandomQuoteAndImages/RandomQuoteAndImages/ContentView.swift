@@ -30,6 +30,17 @@ struct ContentView: View {
             .task {
                 await randomImageListVM.getRandomImages(ids: Array(100...120))
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        Task {
+                            await randomImageListVM.getRandomImages(ids: Array(100...120))
+                        }
+                    } label: {
+                        Image(systemName: "arrow.clockwise.circle")
+                    }
+                }
+            }
         }
     }
 }
