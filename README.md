@@ -150,13 +150,13 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                 <br>
               </ul>
               <br>
-              <p>&emsp;&emsp; 비동기 context에는 <code>.task()</code>, <code>Task {}</code>, <code>async</code>함수 등이 존재</p>
+              <p>&emsp;&emsp; 비동기 context에는 <code>task()</code>, <code>Task</code>, <code>async</code>함수 등이 존재</p>
             </blockquote>
           </aside>
           <ul type="circle">
             <li>
               <h4>Async/await 등장 배경</h4>
-              <p>기존의 <code>@escaping</code> closures를 이용한 비동기 처리 코드는 Deeply-nested closures (중첩 클로저)가 됨으로써, <br>
+              <p>기존의 <code>@escaping</code> closures를 이용한 비동기 처리 코드는 Deeply-nested closures (중첩 클로저)가 됨으로써 <br>
                 코드가 verbose (장황), complex (복잡), incorrect (부정확) 해졌고, 오류처리에 어려움이 있었음</p>
               <aside class="tip">
                 <blockquote>
@@ -325,7 +325,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                               <p><strong>💡 그러나, Controller는 View Lifecycle과 강하게 연결되어 있어 분리가 힘듦 (-> "Massive"한 특성을 지니게 됨)</strong></p>
                               <ul type="circle">
                                 <li>Model에게 맞지 않는 모든 비즈니스 로직 (e.g. Event 처리, View Layout 설정 등)</li>
-                                <li>View의 Life Cycle과 밀접하게 연관 (e.g. viewDidLoad() 등)</li>
+                                <li>View의 Life Cycle과 밀접하게 연관 (e.g. <code>viewDidLoad()</code> 등)</li>
                                 <li>Delegate 및 DataSource의 역할</li>
                                 <li>(필요에 따른) 기타 네트워킹 작업 등</li>
                               </ul>
@@ -339,8 +339,8 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                           <p>🔥 Traditional MVC 구현의 실질적 문제점 (Practical Problem)</p>
                           <ul type="circle">
                             <li>
-                              <p>Mediating Controller는 NSController의 subclass로 Binding 기술을 지원, <br>
-                              이를 사용하지 않으면 View와 Model의 Notification에 대해 반응하는 코드를 custom으로 작성해야함</p>
+                              <p>Mediating Controller는 NSController의 subclass로 Binding 기술을 지원<br>  
+                                이를 사용하지 않으면 View와 Model의 Notification에 대해 반응하는 코드를 custom으로 작성해야함</p>
                             </li>
                           </ul>
                         </blockquote>
@@ -455,7 +455,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                   <aside class="tip">
                     <blockquote>
                       <p>💡 View와 ViewModel의 Binding 방법</p>
-                      <p>&emsp; KVO (Key-Value Observing), NotificationCenter, Property Observers 등을 사용 <br>
+                      <p>&emsp; KVO (Key-Value Observing), NotificationCenter, Property Observers 등을 사용<br>
                         &emsp; 그러나, 이를 바인딩이라고 표현하기에는 애매하고 사용이 불편 (이후 <strong>RxSwift, Combine Framework</strong>가 등장)</p>
                     </blockquote>
                   </aside>
@@ -589,10 +589,10 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                   <p><strong>⭐ Wrapping을 통한 Proxy Pattern 적용으로 기존의 callback API는 유지하면서, Async/Await 함수로 Migration</strong></p>
                   <p>&emsp; 비동기 Task 재개 시, 호출할 수 있는 Methods</p>
                   <ul type="circle">
-                    <li>resume(returning:)</li>
-                    <li>resume(throwing:)</li>
-                    <li>resume(with:)</li>
-                    <li>resume()</li>
+                    <li><code>resume(returning:)</code></li>
+                    <li><code>resume(throwing:)</code></li>
+                    <li><code>resume(with:)</code></li>
+                    <li><code>resume()</code></li>
                   </ul>
                 </blockquote>
               </aside>
@@ -613,6 +613,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
     <!-- Contents -->
     <section>
       <ul type="circle">
+        <!-- Prerequisites -->
         <li>
           <h3>Prerequisites.</h3>
           <figure>
@@ -661,7 +662,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <h4><code>async-let</code> 사용 이유</h4>
               <p>
-                여러 비동기 작업을 단순히 <code>await</code>로만 사용하게 될 경우, suspend를 통해 sequential하게 동작함으로써 총 작업의 소요 시간이 길어짐 <br>
+                여러 비동기 작업을 단순히 <code>await</code>로만 사용하게 될 경우, suspend를 통해 sequential하게 동작함으로써 총 작업의 소요 시간이 길어짐<br>
                 <code>async-let</code>은 여러 비동기 작업을 concurrent하게 실행시킴으로써, 병렬성을 확보할 수 있음
               </p>
             </li>
@@ -748,7 +749,7 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                 </table>
                 <figcaption>
                   <p>
-                    만약 <strong>Child Task에서 error가 발생되었다면, Parent Task는 cancelled 되면서 모든 subtask들도 자동으로 cancel 됨</strong> <br>
+                    만약 <strong>Child Task에서 error가 발생되었다면, Parent Task는 cancelled 되면서 모든 subtask들도 자동으로 cancel 됨</strong><br>
                     여기서 </strong>Cancelled는 <strong>"결괏값이 필요 없어졌음"을 의미</strong>하며, 이는 <strong>Task를 중지하는 것이 아님</strong>
                   </p>
                   <br>
@@ -818,20 +819,20 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               <h4>Async-let의 문제점</h4>
               <figure>
                 <img src="https://github.com/user-attachments/assets/11825da7-c9ab-4bf6-9332-ba40101369e4" />
+                <figcaption>
+                  <p>
+                    <code>async-let</code>은 <strong>동시 처리량의 갯수가 고정적 (Fixed amount of concurrency)일 때 유용</strong>
+                    <br><br>
+                    만약, 여러 Child를 갖는 Parent의 갯수가 '가변적 (Dynamic amount of concurrency)이면서 동시에 수행하고자' 한다면 <strong>Group Task를 사용</strong>
+                  </p>
+                  <aside class="tip">
+                    <blockquote>
+                      <p>💡 즉, Fixed amount of concurrency (고정적인 동시성의 양)를 측정할 수 없다면, 
+                        <code>withThrowingTaskGroup()</code>으로 Task Group을 도입</p>
+                    </blockquote>
+                  </aside>
+                </figcaption>
               </figure>
-              <figcaption>
-                <p>
-                  <code>async-let</code>은 <strong>동시 처리량의 갯수가 고정적 (Fixed amount of concurrency)일 때 유용</strong>
-                  <br><br>
-                  만약, 여러 Child를 갖는 Parent의 갯수가 '가변적 (Dynamic amount of concurrency)이면서 동시에 수행하고자' 한다면 <strong>Group Task를 사용</strong>
-                </p>
-                <aside class="tip">
-                  <blockquote>
-                    <p>💡 즉, Fixed amount of concurrency (고정적인 동시성의 양)를 측정할 수 없다면, 
-                      <code>withThrowingTaskGroup()</code>으로 Task Group을 도입</p>
-                  </blockquote>
-                </aside>
-              </figcaption>
             </li>
             <li>
               <h4>withThrowingTaskGroup()</h4>
@@ -846,94 +847,94 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                     </td>
                   </tr>
                 </table>
+                <figcaption>
+                  <p>Dynamic한 개수의 tasks를 group 기반으로 생성 가능하며, <strong>group 안에 추가된 Child Task들은 순서와 상관없이 random하게 즉시 실행됨</strong></p>
+                  <aside class="tip">
+                    <blockquote>
+                      <p>💡 group이 scope를 벗어나면 group 내부에 존재하는 모든 task의 완료가 암묵적으로 대기됨</p>
+                    </blockquote>
+                  </aside>
+                </figcaption>
               </figure>
-              <figcaption>
-                <p>Dynamic한 개수의 tasks를 group 기반으로 생성 가능하며, <strong>group 안에 추가된 Child Task들은 순서와 상관없이 random하게 즉시 실행됨</strong></p>
-                <aside class="tip">
-                  <blockquote>
-                    <p>💡 group이 scope를 벗어나면 group 내부에 존재하는 모든 task의 완료가 암묵적으로 대기됨</p>
-                  </blockquote>
-                </aside>
-              </figcaption>
             </li>
             <li>
               <h4>withThrowingTaskGroup() 문제점</h4>
               <figure>
                 <img src="https://github.com/user-attachments/assets/ac44c45e-4f38-4852-8976-783eab4aedc8" />
+                <figcaption>
+                  <p>thumbnails 접근 시, Data-race 문제가 발생</p>
+                  <ul type="circle">
+                    <li>Collection Types (Array, Set, Dictionary)은 struct로 구현된 값 타입(Value Type)으로 <strong>Thread-Safe 하지 않음</strong></li>
+                    <li><code>addTask()</code>로 추가된 독립적인 Task가 하나의 공유 자원을 동시에 접근 시도</li>
+                    <li>Sendable 하지 않은 thumbnails 캡처 제한</li>
+                  </ul>
+                  <aside class="tip">
+                    <blockquote>
+                      <h4>💡 Data-race safety</h4>
+                      <ul type="circle">
+                        <li>Task creation takes a @Sendable closure</li>
+                        <li>Cannot capture mutable variables</li>
+                        <li>Should only capture value types, actors, or classes that implement their own synchronization</li>
+                      </ul>
+                    </blockquote>
+                  </aside>
+                  <p>새로운 Task를 만들면 이는 <code>@Sendable</code> closure라는 새로운 closure type이 되고, 
+                    @Sendable closure는 <strong>외부의 가변 변수 캡처가 불가능!</strong>
+                  </p>
+                  <aside class="tip">
+                    <blockquote>
+                      <p>⭐ @Sendable closure는 Sendable 프로토콜을 준수하는 type만 캡처 가능</p>
+                      <ul type="circle">
+                        <li>값 타입 (Value Types)</li>
+                        <li>actors (여러 스레드에서 접근할 수 있도록 설계된 객체)</li>
+                        <li>classes (자체 동기화를 구현한 thread-safe한 class)</li>
+                      </ul>
+                    </blockquote>
+                  </aside>
+                </figcaption>
               </figure>
-              <figcaption>
-                <p>thumbnails 접근 시, Data-race 문제가 발생</p>
-                <ul type="circle">
-                  <li>Collection Types (Array, Set, Dictionary)은 struct로 구현된 값 타입(Value Type)으로 <strong>Thread-Safe 하지 않음</strong></li>
-                  <li>addTask()로 추가된 독립적인 Task가 하나의 공유 자원을 동시에 접근 시도</li>
-                  <li>Sendable 하지 않은 thumbnails 캡처 제한</li>
-                </ul>
-                <aside class="tip">
-                  <blockquote>
-                    <h4>💡 Data-race safety</h4>
-                    <ul type="circle">
-                      <li>Task creation takes a @Sendable closure</li>
-                      <li>Cannot capture mutable variables</li>
-                      <li>Should only capture value types, actors, or classes that implement their own synchronization</li>
-                    </ul>
-                  </blockquote>
-                </aside>
-                <p>새로운 Task를 만들면 이는 <code>@Sendable</code> closure라는 새로운 closure type이 되고, 
-                  @Sendable closure는 <strong>외부의 가변 변수 캡처가 불가능!</strong>
-                </p>
-                <aside class="tip">
-                  <blockquote>
-                    <p>⭐ @Sendable closure는 Sendable 프로토콜을 준수하는 type만 캡처 가능</p>
-                    <ul type="circle">
-                      <li>값 타입 (Value Types)</li>
-                      <li>actors (여러 스레드에서 접근할 수 있도록 설계된 객체)</li>
-                      <li>classes (자체 동기화를 구현한 thread-safe한 class)</li>
-                    </ul>
-                  </blockquote>
-                </aside>
-              </figcaption>
             </li>
             <li>
               <h4>withThrowingTaskGroup()에서 Data-race 해결법</h4>
               <figure>
                 <img src="https://github.com/user-attachments/assets/38cfae22-108e-4845-8cb3-038d57950706" />
+                <figcaption>
+                  <p><strong>Child Task는 독립적인 값을 return</strong>하고, <strong>Parent Task에서 for-await를 통해 group을 순회하면서 결과를 처리</strong></p>
+                </figcaption>
               </figure>
-              <figcaption>
-                <p><strong>Child Task는 독립적인 값을 return</strong>하고, <strong>Parent Task에서 for-await를 통해 group을 순회하면서 결과를 처리</strong></p>
-              </figcaption>
             </li>
             <li>
               <h4>Group Task vs Async-let</h4>
               <figure>
                 <img src="https://github.com/user-attachments/assets/b4dd8a74-4e5a-43b1-85a2-1011ed18272d" />
+                <figcaption>
+                  <p>만약 Group의 결과를 순회하는 for-await loop 안에서 error와 함께 완료된 Child Task가 발견되었다면, 그 error는 Group의 block 외부로 전달됨<br>
+                    이 때, <code>async-let</code>과 Group Task는 Task tree rule 구현 관점에서 아래와 같은 공통점과 차이점을 갖음</p>
+                  <ul type="circle">
+                    <li>
+                      <p>공통점: 모든 Task들이 implicitly cancelled 된 후, awaited 상태가 됨</p>
+                    </li>
+                    <li>
+                      <p>차이점: group이 block을 벗어나 정상적으로 종료되었다면, implicitly cancelled 되지 않고, awaited 상태만 유지</p>
+                      <aside class="tip">
+                        <blockquote>
+                          <p>💡 group의 <code>cancelAll()</code>을 사용하여 block을 종료하기 전에 모든 task를 수동으로 취소할 수 있음</p>
+                        </blockquote>
+                      </aside>
+                      <ul type="circle">
+                        <li><code>async-let</code>: 선언된 scope를 벗어날 때까지, await를 호출하지 않으면 implicitly cancelled 된 후 awaited 상태</li>
+                        <li>Task Group: await를 호출하지 않아도, cancel 되지 않고 모든 Child Task가 완료될 때까지 awaited 상태 유지</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <br>
+                  <aside class="tip">
+                    <blockquote>
+                      <p><strong>⭐ 어떠한 방식으로 task를 cancel하든 cancellation은 Task tree에서 자동으로 Top-Down 방식으로 전파!</strong></p>
+                    </blockquote>
+                  </aside>
+                </figcaption>
               </figure>
-              <figcaption>
-                <p>만약 Group의 결과를 순회하는 for-await loop 안에서 error와 함께 완료된 Child Task가 발견되었다면, 그 error는 Group의 block 외부로 전달됨<br>
-                이 때, <code>async-let</code>과 Group Task는 Task tree rule 구현 관점에서 아래와 같은 공통점과 차이점을 갖음</p>
-                <ul type="circle">
-                  <li>
-                    <p>공통점: 모든 Task들이 implicitly cancelled 된 후, awaited 상태가 됨</p>
-                  </li>
-                  <li>
-                    <p>차이점: group이 block을 벗어나 정상적으로 종료되었다면, implicitly cancelled 되지 않고, awaited 상태만 유지</p>
-                    <aside class="tip">
-                      <blockquote>
-                        <p>💡 group의 <code>cancelAll()</code>을 사용하여 block을 종료하기 전에 모든 task를 수동으로 취소할 수 있음</p>
-                      </blockquote>
-                    </aside>
-                    <ul type="circle">
-                      <li><code>async-let</code>: 선언된 scope를 벗어날 때까지, await를 호출하지 않으면 implicitly cancelled 된 후 awaited 상태</li>
-                      <li>Task Group: await를 호출하지 않아도, cancel 되지 않고 모든 Child Task가 완료될 때까지 awaited 상태 유지</li>
-                    </ul>
-                  </li>
-                </ul>
-                <br>
-                <aside class="tip">
-                  <blockquote>
-                    <p><strong>⭐ 어떠한 방식으로 task를 cancel하든 cancellation은 Task tree에서 자동으로 Top-Down 방식으로 전파!</strong></p>
-                  </blockquote>
-                </aside>
-              </figcaption>
             </li>
           </ul>
           <br>
@@ -955,11 +956,11 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
             <li>
               <h4>Creating an unstructured task</h4>
               <figure>
-                <img src="https://github.com/user-attachments/assets/fc39eadb-19cc-43e4-8881-022f7cfa5e6a" />
+                <img src="https://github.com/user-attachments/assets/e4bed743-5fc4-4ee5-bda8-841ea2900db7" />
+                <figcaption>
+                  <p>async하지 않은 Delegate의 일반(동기) 메서드 context 안에서 비동기 작업 사용이 필요하므로 <code>Task</code>로 비동기 태스크 생성</p>
+                </figcaption>
               </figure>
-              <figcaption>
-                <p>async하지 않은 Delegate의 일반(동기) 메서드 context 안에서 비동기 작업 사용이 필요하므로 <code>Task{}</code>로 비동기 태스크 생성</p>
-              </figcaption>
             </li>
           </ul>
           <aside class="tip">
@@ -1021,10 +1022,10 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
                     </td>
                   </tr>
                 </table>
+                <figcaption>
+                  <p>만약 thumbnail이 준비되기 전에, 스크롤이 발생해서 cell이 사라진다면 명시적인 처리 (explicit action)로 <code>cancel()</code>을 호출해 task를 취소</p>
+                </figcaption>
               </figure>
-              <figcaption>
-                <p>만약 thumbnail이 준비되기 전에, 스크롤이 발생해서 cell이 사라진다면 명시적인 처리 (explicit action)로 <code>cancel()</code>을 호출해 task를 취소</p>
-              </figcaption>
             </li>
           </ul>
           <br>
@@ -1048,10 +1049,10 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
               <h4>Creating a task group instide a detached task</h4>
               <figure>
                 <img src="https://github.com/user-attachments/assets/7dd72751-0638-4771-aaa2-54b6ddf0b10b" />
+                <figcaption>
+                  <p><code>detached()</code>를 통해 독립적인 Task를 생성한 후, 내부에 Structured tasks를 형성</p>
+                </figcaption>
               </figure>
-              <figcaption>
-                <p>detached()를 통해 독립적인 Task를 생성한 후, 내부에 Structured tasks를 형성</p>
-              </figcaption>
             </li>
           </ul>
           <br>
@@ -1060,8 +1061,115 @@ Learn async/await, actors, async-let, task groups, unstructured concurrency, det
         <li>
           <h3>Summary</h3>
           <figure>
-            <img src="https://github.com/user-attachments/assets/26a96f70-6347-4fff-a036-72a8cda734ba" />
+            <img src="https://github.com/user-attachments/assets/f0127d10-5dfa-4e4d-9c8b-f5b470dc53e4" />
           </figure>
+        </li>
+      </ul>
+    </section>
+  </details>
+</article>
+
+<!-- 6.AsyncSequence -->
+<article class="lecture6">
+  <details>
+    <!-- Title -->
+    <summary><strong>6️⃣ AsyncSequence</strong></summary>
+    <!-- Contents -->
+    <section>
+      <ul type="circle">
+        <!-- AsyncSequence & AsyncStream -->
+        <li>
+          <h3>AsyncSequence & AsyncStream</h3>
+          <ul type="circle">
+            <li>
+              <p><strong>AsyncSequence: 시간에 따라 값을 (비동기적으로) 생성하는 방법</strong></p>
+              <aside class="tip">
+                <blockquote>
+                  <h4>💡 AsyncSequence</h4>
+                  <ul type="circle">
+                    <li>Is just like Sequence expect async</li>
+                    <li>May throw</li>
+                    <li>Terminates at end or an error</li>
+                  </ul>
+                </blockquote>
+              </aside>
+              <p><strong>각 element에서 suspend</strong>되고, underlying iterator가 값을 생성하거나 에러를 발생시키면 resume함</p>
+              <aside class="tip">
+                <blockquote>
+                  <p><strong>즉, element는 비동기적으로 전달되며 실패할 가능성이 있음</strong></p>
+                </blockquote>
+              </aside>
+              <ul type="circle">
+                <li>
+                  <h4>AsyncSequence iteration</h4>
+                  <figure>
+                    <table>
+                      <tr>
+                        <td align="center">
+                          <img src="https://github.com/user-attachments/assets/8f9439ac-83ca-41a5-86c7-c6d77321060b" />
+                          <p>AsyncIteratorProtocol</p>
+                        </td>
+                        <td align="center">
+                          <img src="https://github.com/user-attachments/assets/82051453-31fe-4865-aa5f-0d5092255e6b" />
+                          <p>AsyncSequence</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </figure>
+                </li>
+                <li>
+                  <h4>Concurrently iterating inside an async task</h4>
+                  <figure>
+                    <img src="https://github.com/user-attachments/assets/4703d0cb-c126-42ff-ab3e-afb760833aab" />
+                    <figcaption>
+                      <p>반복 작업 (iteration)을 다른 작업과 동시에 실행하는 것이 유용하다면 iteration을 비동기 작업으로 캡슐화할 수 있음</p>
+                    </figcaption>
+                    <p></p>
+                  </figure>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p><strong>AsyncStream: Callbacks/Delegates 패턴으로 구현된 기존 코드를 AsyncSequence로 전환시키는 디자인 패턴</strong></p>
+              <aside class="tip">
+                <blockquote>
+                  <h4>💡 Build your own</h4>
+                  <ul type="circle">
+                    <li>Callbacks</li>
+                    <li>Some Delegates</li>
+                  </ul>
+                </blockquote>
+              </aside>
+              <figure>
+                <table>
+                  <tr>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/5d9c24c2-a27b-47f1-825e-e8661483ab50" />
+                      <p>AsyncStream</p>
+                    </td>
+                    <td align="center">
+                      <img src="https://github.com/user-attachments/assets/e5a3711d-0bca-45b1-9988-66b038227bfa" />
+                      <p>AsyncThrowingStream</p>
+                    </td>
+                  </tr>
+                </table>
+                <figcaption>
+                  <p>
+                    AsyncStream은 값을 여러번 생성 (<code>yield()</code>), 종료 (<code>finish()</code>), 중단 (<code>onTermination</code>)을 
+                    처리하는 Continuation을 갖음<br>
+                    AsyncStream을 사용하면, 사용자 정의 비동기 시퀀스를 만드는 데 있어 상당한 유연성을 누릴 수 있음
+                  </p>
+                  <aside class="tip">
+                    <blockquote>
+                      <p><strong>💡 safety, iteration, cancellation 등 async sequence에서 기대하는 모든 기능을 처리할 뿐만 아니라 
+                        buffering 기능도 제공</strong></p>
+                    </blockquote>
+                  </aside>
+                </figcaption>
+              </figure>
+              <br>
+            </li>
+          </ul>
         </li>
       </ul>
     </section>
