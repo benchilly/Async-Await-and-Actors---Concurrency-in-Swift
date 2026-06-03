@@ -46,7 +46,7 @@ queue.async {
  */
 
 
-// TODO: 1.Serial Queue로 처리
+// TODO: 1. Serial Queue로 처리
 /*
 let bankAccount: BankAccount = BankAccount(balance: 500)
 let queue: DispatchQueue = DispatchQueue(label: "SerialQueue")
@@ -60,7 +60,7 @@ queue.async {
 }
  */
 
-// TODO: 2.NSLock (Mutex)로 처리
+// TODO: 2. NSLock (Mutex)로 처리
 /// `Mutex (Mutual Exclusion, 상호 배제)`
 /// 정의: 여러 스레드나 프로세스가 동시에 공유 자원에 접근할 때, `단 하나의 스레드만` 자원에 접근할 수 있도록 제한하는 동기화 기법
 ///
