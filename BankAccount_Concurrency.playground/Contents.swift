@@ -13,9 +13,9 @@ class BankAccount {
         
         if (balance >= amount) {
             let processingTime: UInt32 = UInt32.random(in: 0...3)
-            print("[withDraw] Processing for \(amount) | \(processingTime) seconds")
+            print("[Withdraw] Processing for \(amount) | \(processingTime) seconds")
             sleep(processingTime)
-            print("withDrawing \(amount) from account")
+            print("Withdrawing \(amount) from account")
             
             balance -= amount
             print("Balance is \(balance)")
